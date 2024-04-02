@@ -62,12 +62,29 @@ public class AppConfig {
     }
 
     @Bean
+    public Pizza margheritaXLBean() {
+        List<Condimento> condimentoList = new ArrayList<>();
+        condimentoList.add(pomodoroBean());
+        condimentoList.add(mozzarellaBean());
+        return new Pizza("Margherita XL", condimentoList, 1500 + pomodoroBean().getCalorie() + mozzarellaBean().getCalorie(), 8.00 + pomodoroBean().getPrezzo() + mozzarellaBean().getPrezzo());
+    }
+
+    @Bean
     public Pizza pizzaProsciuttoBean() {
         List<Condimento> condimentoList = new ArrayList<>();
         condimentoList.add(pomodoroBean());
         condimentoList.add(mozzarellaBean());
         condimentoList.add(prosciuttoBean());
         return new Pizza("Pizza al prosciutto", condimentoList, 1000 + pomodoroBean().getCalorie() + mozzarellaBean().getCalorie() + prosciuttoBean().getCalorie(), 5.00 + pomodoroBean().getPrezzo() + mozzarellaBean().getPrezzo() + prosciuttoBean().getPrezzo());
+    }
+
+    @Bean
+    public Pizza pizzaProsciuttoXLBean() {
+        List<Condimento> condimentoList = new ArrayList<>();
+        condimentoList.add(pomodoroBean());
+        condimentoList.add(mozzarellaBean());
+        condimentoList.add(prosciuttoBean());
+        return new Pizza("Pizza al prosciutto XL", condimentoList, 1500 + pomodoroBean().getCalorie() + mozzarellaBean().getCalorie() + prosciuttoBean().getCalorie(), 8.00 + pomodoroBean().getPrezzo() + mozzarellaBean().getPrezzo() + prosciuttoBean().getPrezzo());
     }
 
     @Bean
@@ -81,11 +98,24 @@ public class AppConfig {
     }
 
     @Bean
+    public Pizza pizzaDiavolaXLBean() {
+        List<Condimento> condimentoList = new ArrayList<>();
+        condimentoList.add(pomodoroBean());
+        condimentoList.add(mozzarellaBean());
+        condimentoList.add(oliveBean());
+        condimentoList.add(salamePiccanteBean());
+        return new Pizza("Pizza alla diavola XL", condimentoList, 1500 + pomodoroBean().getCalorie() + mozzarellaBean().getCalorie() + salamePiccanteBean().getCalorie() + oliveBean().getCalorie(), 8.00 + pomodoroBean().getPrezzo() + mozzarellaBean().getPrezzo() + oliveBean().getPrezzo() + salamePiccanteBean().getPrezzo());
+    }
+
+    @Bean
     public Menu menuBean() {
         List<Pizza> pizzaList = new ArrayList<>();
         pizzaList.add(margheritaBean());
         pizzaList.add(pizzaDiavolaBean());
         pizzaList.add(pizzaProsciuttoBean());
+        pizzaList.add(margheritaXLBean());
+        pizzaList.add(pizzaDiavolaXLBean());
+        pizzaList.add(pizzaProsciuttoXLBean());
         List<Bevanda> bevandaList = new ArrayList<>();
         bevandaList.add(acquaBean());
         bevandaList.add(limonataBean());
